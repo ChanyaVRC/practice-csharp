@@ -14,7 +14,7 @@ public class UnderstandingRuntimeTypeTest
         Assert.Equal(typeof(object), UnderstandingRuntimeType.GetCompileTimeType(new object()));
         Assert.Equal(typeof(Class), UnderstandingRuntimeType.GetCompileTimeType(new Class()));
         Assert.Equal(typeof(object), UnderstandingRuntimeType.GetCompileTimeType<object>(new Class()));
-        Assert.Equal(typeof(Class), UnderstandingRuntimeType.GetRuntimeType<Class>(null));
+        Assert.Equal(typeof(Class), UnderstandingRuntimeType.GetCompileTimeType<Class>(null));
     }
 
     [Fact]

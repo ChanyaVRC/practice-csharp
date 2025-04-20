@@ -30,7 +30,7 @@ public class LinqIntroductionTest
     public void Test_IsOverThanAverage()
     {
         Assert.True(LinqIntroduction.IsOverThanAverage([1, 2, 3], 4));
-        Assert.False(LinqIntroduction.IsOverThanAverage([1, 2, 3], 3));
+        Assert.True(LinqIntroduction.IsOverThanAverage([1, 2, 3], 3));
         Assert.False(LinqIntroduction.IsOverThanAverage([1, 2, 3], 2));
         Assert.False(LinqIntroduction.IsOverThanAverage([1, 2, 3], 1));
         Assert.False(LinqIntroduction.IsOverThanAverage([1, 2, 3], -1));

@@ -1,6 +1,4 @@
 <Solution>
-  <Project Path="benchmark/benchmark.csproj" />
-  <Project Path="expected-answer/expected-answer.csproj" />
   <Project Path="implementation.test/implementation.test.csproj" />
   <Project Path="implementation/implementation.csproj" />
   <Project Path="library/library.csproj" />

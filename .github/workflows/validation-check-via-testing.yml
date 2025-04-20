@@ -1,0 +1,50 @@
+name: Validation Check via Testing
+
+env:
+  SOLUTION_PATH: ./exercises.slnx
+
+on:
+  pull_request:
+    branches: [ '*/master' ]
+  workflow_dispatch:
+    inputs:
+      test_class:
+        description: 'Name of the class to test'
+        required: true
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.x
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.SOLUTION_PATH }}
+    - name: Build
+      run: dotnet build ${{ env.SOLUTION_PATH }} --no-restore
+    - name: Set test target
+      run: |
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          echo "TEST_TARGET=${{ github.event.inputs.test_class }}" >> $GITHUB_ENV
+        else
+          echo "TEST_TARGET=$(echo '${{ github.event.pull_request.changed_files }}' | grep '\.cs$' | sed 's#.*/##; s/\.cs$//g' | tr '\n' ' ')" >> $GITHUB_ENV
+        fi
+    - name: Test
+      run: |
+        mkdir -p test-results
+        for target in $TEST_TARGET; do
+          dotnet test ${{ env.SOLUTION_PATH }} --filter "TestOf=$target" --no-build --verbosity normal --logger "trx;LogFileName=$target.trx" --results-directory ./test-results
+        done
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-${{ matrix.os }}
+        path: test-results/
+        retention-days: 7
+      if: ${{ always() }}

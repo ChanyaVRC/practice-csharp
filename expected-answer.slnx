@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="implementation.test/implementation.test.csproj" />
+  <Project Path="expected-answer/expected-answer.csproj" />
+  <Project Path="library/library.csproj" />
+</Solution>

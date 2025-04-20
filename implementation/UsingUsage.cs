@@ -11,7 +11,7 @@ public class UsingUsage
 
     public UsingUsage()
     {
-        Result = Library.Result;
+        Result = LibraryClass.Result;
         PriorityCheck = typeof(PriorityCheck);
     }
 }

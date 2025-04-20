@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library.UsingUsage.Valid
+namespace Library.UsingUsage.Invalid
 {
-    public class Library
+    public class LibraryClass
     {
-        public static readonly string Result = "Valid";
+        public static readonly string Result = "Invalid";
     }
 }

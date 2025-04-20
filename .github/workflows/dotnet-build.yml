@@ -1,0 +1,39 @@
+name: .NET Build and Test
+
+on:
+  push:
+    branches:
+      - "master"
+      - "dev/**"
+  pull_request:
+    branches:
+      - "master"
+      - "dev/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        solution_path:
+          [./practice-csharp.slnx, ./exercises.slnx, ./expected-answer.slnx]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.x"
+
+      - name: Restore dependencies
+        run: dotnet restore ${{ matrix.solution_path }}
+
+      - name: Build
+        run: dotnet build ${{ matrix.solution_path }} --no-restore
+
+      - name: Test
+        if: ${{ matrix.solution_path == './expected-answer.slnx' }}
+        run: dotnet test ${{ matrix.solution_path }} --no-build

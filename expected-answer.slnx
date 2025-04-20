@@ -1,6 +1,5 @@
 <Solution>
-  <Project Path="benchmark/benchmark.csproj" />
   <Project Path="implementation.test/implementation.test.csproj" />
-  <Project Path="expected-answer/implementation.csproj" />
-  <Project Path="library/library.csproj" Id="54eba2d4-2fc1-4c81-a18c-aa51c360d256" />
+  <Project Path="expected-answer/expected-answer.csproj" />
+  <Project Path="library/library.csproj" />
 </Solution>

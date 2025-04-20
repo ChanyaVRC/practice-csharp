@@ -11,7 +11,7 @@ C# の勉強用Repository
     ```bash
     git switch -C <your_name>/hogehoge
     ```
-3. `practice-csharp.sln` or `practice-csharp.slnx` を Visual Studio で開きます
+3. `exercises.slnx` を Visual Studio で開きます
 4. `implementation` プロジェクトのC#コードを TODO に沿って変更します
 5. `Traits` が `TestOf=<class_name>` のテストを実行して Pass することを確認します
 6. コミットします
@@ -38,12 +38,12 @@ C# の勉強用Repository
 2. `implementation` ディレクトリ内の C# ソースコードを TODO に沿って編集
     1. ビルドできるかの確認
         ```bash
-        dotnet build ./practice-csharp.sln
+        dotnet build ./exercises.slnx
         ```
         
     2. テストを実行して Pass するかの確認
         ```bash
-        dotnet test ./practice-csharp.sln --filter "TestOf=<class_name>"
+        dotnet test ./exercises.slnx --filter "TestOf=<class_name>"
         ```
 3. コミット & プッシュ する
     ```bash

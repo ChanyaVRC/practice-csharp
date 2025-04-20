@@ -20,7 +20,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\implementation\implementation.csproj" />
+		<ProjectReference Include="..\expected-answer\implementation.csproj" Condition="'$(SolutionName)' == 'expected-answer'" />
+		<ProjectReference Include="..\implementation\implementation.csproj"  Condition="'$(SolutionName)' == 'practice-csharp'" />
 	</ItemGroup>
 
 </Project>

@@ -41,7 +41,7 @@ public class UnderstandingCastTest
         Assert.Equal(expected[8], _understandingCast.CanCastTo<Struct>(data));
 
         Assert.True(_understandingCast.CanCastTo<object>(data));
-        Assert.Equal(data is ValueType, _understandingCast.CanCastTo<ValueType>(data));
+        Assert.Equal(data is ValueType || data is null, _understandingCast.CanCastTo<ValueType>(data));
     }
 
     [Theory]

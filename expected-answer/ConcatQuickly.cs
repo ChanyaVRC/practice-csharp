@@ -6,7 +6,14 @@ namespace Implementation;
 public class ConcatQuickly
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    // REMARK: This is fast enough, but using StringBuilder properly can finish in about 80% of the time.
     public static string MakeStringOfSequentialNumber()
-        => string.Join(",", Enumerable.Range(0, 10000));
+    {
+        StringBuilder result = new(48889);
+        result.Append(0);
+        for (int i = 1; i < 10000; i++)
+        {
+            result.Append(',').Append(i);
+        }
+        return result.ToString();
+    }
 }

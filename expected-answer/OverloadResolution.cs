@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Implementation;
 
-namespace Implementation
+public class OverloadResolution
 {
-    public class OverloadResolution
+    public OverloadResolution() { }
+
+    public Type? ArgumentType { get; private set; }
+    public object? Value { get; private set; }
+
+    public void Method(int i) { ArgumentType = i.GetType(); Value = i; }
+    public void Method(long i) { ArgumentType = i.GetType(); Value = i; }
+
+    public void CallMethod()
     {
-        public OverloadResolution() { }
-
-        public Type? ArgumentType { get; private set; }
-        public object? Value { get; private set; }
-
-        public void Method(int i) { ArgumentType = i.GetType(); Value = i; }
-        public void Method(long i) { ArgumentType = i.GetType(); Value = i; }
-
-        public void CallMethod()
-        {
-            Method(1L);
-        }
+        Method(1L);
     }
 }

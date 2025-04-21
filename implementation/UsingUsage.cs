@@ -1,8 +1,8 @@
 ﻿using Library.UsingUsage.Valid;
-// TODO: using を追加して、Result が "Valid" になるようにする
 
 namespace Implementation;
 using Library.UsingUsage.Invalid;
+// TODO: using を追加して、Result が "Valid" になるようにする
 
 public class UsingUsage
 {

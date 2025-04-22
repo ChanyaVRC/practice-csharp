@@ -58,9 +58,16 @@ public class InheritClassTest
     [Fact]
     public void Test_IsHuman()
     {
-        Assert.False(InheritClass.IsHuman(new Cat() { GeneticSex = GeneticSex.Male }));
-        Assert.False(InheritClass.IsHuman(new Dog() { GeneticSex = GeneticSex.Male }));
-        Assert.True(InheritClass.IsHuman(new Human() { GeneticSex = GeneticSex.Male }));
+        MethodInfo? isHumanMethod = typeof(InheritClass).GetMethod("IsHuman", BindingFlags.Public | BindingFlags.Static, [typeof(Animal)]);
+        Assert.NotNull(isHumanMethod);
+
+        Assert.True(isHumanMethod.IsPublic, "IsHuman method should be public");
+        Assert.True(isHumanMethod.IsStatic, "IsHuman method should be static");
+        Assert.Equal(typeof(bool), isHumanMethod.ReturnType);
+
+        Assert.False(isHumanMethod.Invoke(null, [new Cat() { GeneticSex = GeneticSex.Male }]) as bool? ?? false);
+        Assert.False(isHumanMethod.Invoke(null, [new Dog() { GeneticSex = GeneticSex.Male }]) as bool? ?? false);
+        Assert.True(isHumanMethod.Invoke(null, [new Human() { GeneticSex = GeneticSex.Male }]) as bool? ?? false);
     }
 
     [Theory]

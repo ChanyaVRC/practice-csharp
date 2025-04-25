@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "practice-csharp.slnx",
+    "projects": [
+      "expected-answer\\expected-answer.csproj",
+      "implementation.test\\implementation.test.csproj",
+      "library\\library.csproj"
+    ]
+  }
+}

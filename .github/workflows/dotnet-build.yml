@@ -17,7 +17,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         solution_path:
-          [./practice-csharp.slnx, ./exercises.slnx, ./expected-answer.slnx]
+          [./practice-csharp.slnx, ./exercises.slnx, ./expected-answer.slnf]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -35,5 +35,5 @@ jobs:
         run: dotnet build ${{ matrix.solution_path }} --no-restore
 
       - name: Test
-        if: ${{ matrix.solution_path == './expected-answer.slnx' }}
+        if: ${{ matrix.solution_path == './expected-answer.slnf' }}
         run: dotnet test ${{ matrix.solution_path }} --no-build

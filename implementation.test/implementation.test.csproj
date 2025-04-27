@@ -19,15 +19,11 @@
 		<Using Include="Xunit" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(SolutionName)' == 'expected-answer'">
-		<ProjectReference Include="..\expected-answer\expected-answer.csproj"/>
-	</ItemGroup>
-
 	<ItemGroup Condition="'$(SolutionName)' == 'exercises'">
 		<ProjectReference Include="..\implementation\implementation.csproj"/>
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(SolutionName)' == 'practice-csharp'">
+	<ItemGroup Condition="'$(SolutionName)' != 'exercises'">
 		<ProjectReference Include="..\expected-answer\expected-answer.csproj"/>
 	</ItemGroup>
 
